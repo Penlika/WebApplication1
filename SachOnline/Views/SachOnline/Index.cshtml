@@ -1,0 +1,37 @@
+﻿@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<h2 class="text-center">SÁCH MỚI</h2>
+<hr>
+<div class="row text-center container body-content">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <a href=@Url.Action("ChiTietSach", "SachOnline", new {MaSach=item.Masach})>
+                <div class="thumbnail">
+                    <img src=@item.Anhbia class="img-thumbnail rounded-5" alt="...">
+                    <div class="caption">
+                        <h4>@item.Tensach </h4>
+                        <p>@item.Mota</p>
+                        <p>
+                            <a href="#" class="btn btn-primary" role="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                </svg> Add to Cart
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+<nav aria-label="Page navigation example" class="text-center">
+    @Html.PagedListPager(
+        (PagedList.IPagedList)Model,page => Url.Action("Index", new { page = page })
+    )
+</nav>
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+@*This is to display the page number*@

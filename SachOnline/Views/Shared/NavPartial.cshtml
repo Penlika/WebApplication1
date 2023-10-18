@@ -1,0 +1,52 @@
+﻿<link href="~/Content/Site.css" />
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-black container body-content">
+    <div class="container-fluid align-items-center*+">
+        <a class="navbar-brand text-light Sach" href="#">SachOnline</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="#">TRANG CHỦ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">GIỚI THIỆU</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">LIÊN HỆ</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        SÁCH THEO CHỦ ĐỀ
+                    </a>
+                    <ul class="dropdown-menu text-light">
+                        @foreach (var item in Model[0])
+                        {
+                            <li><a class="dropdown-item" href="#">@item.TenChuDe</a></li>
+                        }
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        SÁCH THEO NHÀ XUẤT BẢN
+                    </a>
+                    <ul class="dropdown-menu text-light">
+                        @foreach (var item in Model[1])
+                        {
+                            <li><a class="dropdown-item" href="#">@item.TenNXB</a></li>
+                        }
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex m-lg-3">
+                <input class="form-control me-2 custom-search-input" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <div class="col-1">
+                <a class="btn btn-primary" href="@Url.Action("Register", "Users")">Dang ky</a>
+                <a class="btn btn-primary" href="@Url.Action("Login", "Users")">Dang nhap</a>
+            </div>
+        </div>
+    </div>
+</nav>
