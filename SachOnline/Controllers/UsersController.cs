@@ -30,7 +30,7 @@ namespace SachOnline.Controllers
                 var tk=db.KHACHHANGs.FirstOrDefault(k=>k.Taikhoan==Model.Taikhoan);
                 if(tk!=null)
                 {
-                    ModelState.AddModelError("Taikhoan","Tai khoan ton tai");
+                    ModelState.AddModelError("Taikhoan","Tài khoản không tồn tại");
                     return View(Model);
                 }
                 db.KHACHHANGs.Add(Model);
@@ -53,14 +53,18 @@ namespace SachOnline.Controllers
                 if (u != null)
                 {
                     Session["Taikhoan"] = u;
-                    ViewBag.ThongBao = "Dang nhap thanh cong";
                 }
                 else
                 {
-                    ModelState.AddModelError("Password", "Tai khoan va mat khau khong ton tai");
+                    ModelState.AddModelError("Password", "Tài khoản không tồn tại hoặc sai mật khẩu");
                 }
             }
-            return View();
+            return RedirectToAction("index","SachOnline");
+        }
+        public ActionResult Logout()
+        {
+            Session["Taikhoan"] = null;
+            return Redirect("~/");
         }
     }
 }

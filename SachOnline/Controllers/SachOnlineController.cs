@@ -50,13 +50,5 @@ namespace SachOnline.Controllers
             var sach=db.SACHes.FirstOrDefault( s=>s.Masach ==MaSach);
             return View(sach);
         }
-        public ActionResult Register()
-        {
-            return View();
-        }
-        public ActionResult Login()
-        {
-            return View();
-        }
     }
 }

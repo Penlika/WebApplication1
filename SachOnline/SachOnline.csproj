@@ -148,7 +148,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\SachOnlineController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -157,6 +157,14 @@
     <Compile Include="Migrations\202310110647227_gfgf.cs" />
     <Compile Include="Migrations\202310110647227_gfgf.designer.cs">
       <DependentUpon>202310110647227_gfgf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311010800373_sada.cs" />
+    <Compile Include="Migrations\202311010800373_sada.designer.cs">
+      <DependentUpon>202311010800373_sada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311010832439_jjk.cs" />
+    <Compile Include="Migrations\202311010832439_jjk.designer.cs">
+      <DependentUpon>202311010832439_jjk.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CHITIETDONTHANG.cs" />
@@ -228,9 +236,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
     <Content Include="Views\SachOnline\Index.cshtml" />
     <Content Include="Views\Shared\ChuDePartial.cshtml" />
@@ -241,6 +246,8 @@
     <Content Include="Views\SachOnline\ChiTietSach.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\XacNhanDatHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -278,6 +285,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202310110647227_gfgf.resx">
       <DependentUpon>202310110647227_gfgf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311010800373_sada.resx">
+      <DependentUpon>202311010800373_sada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311010832439_jjk.resx">
+      <DependentUpon>202311010832439_jjk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

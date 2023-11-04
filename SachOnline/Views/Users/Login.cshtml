@@ -5,34 +5,36 @@
 }
 
 <h2>Login</h2>
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
-    <tr>
-        <td>Ten Dang Nhap</td>
-        <td>
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-        </td>
-    </tr>
-    <br />
-    <tr>
-        <td>Mat Khau</td>
-        <td>
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-        </td>
-    </tr>
-    <br />
-    <td></td>
-    <td>
-        <button type="submit" class="btn btn-primary">Dang nhap</button>
+<div class="container" style="width:600px">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr>
+            <td>Tên Đăng Nhập</td>
+            <td>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+            </td>
+        </tr>
         <br />
-        @if (!string.IsNullOrEmpty(ViewBag.ThongBao))
-        {
-            <label class="text-primary">@ViewBag.ThongBao</label>
-        }
-    </td>
+        <tr>
+            <td>Mật Khẩu</td>
+            <td>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <br />
+        <td></td>
+        <td>
+            <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+            <br />
+            @if (!string.IsNullOrEmpty(ViewBag.ThongBao))
+            {
+                <label class="text-primary">@ViewBag.ThongBao</label>
+            }
+        </td>
 
-}
+    }
+</div>
 

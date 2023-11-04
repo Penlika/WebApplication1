@@ -1,0 +1,146 @@
+﻿@using SachOnline.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@{ 
+    int total = 0;
+    int count = 0;
+    KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+   
+}
+<section class="h-100 h-custom" style="background-color: #d2c9ff;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-8">
+                                <div class="p-2">
+                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                        <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                                        <h6 class="mb-0 text-muted">3 items</h6>
+                                    </div>
+                                    <hr class="my-4">
+
+                                    @foreach (dynamic item in Model)
+                                    {
+
+                                        total += item.Thanhtien;
+                                        count += item.ThanhTien;
+
+                                        <div class="card rounded-3 mb-4">
+                                            <div class="card-body p-2">
+                                                <div class="row d-flex justify-content-between align-items-center">
+                                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                                        <img src="@item.Anhbia"
+                                                             class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                                        <p class="lead fw-normal mb-2">@item.Tensach</p>
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-4 col-xl-2 d-flex">
+                                                        <a class="btn btn-link px-2"
+                                                           href="@Url.Action("UpdateCart","Cart",new {MaDonHang=item.MaDonHang,MaSach=item.Masach,SoLuong=item.Soluong-1})"
+                                                           onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                            <i class="bi bi-dash"></i>
+                                                        </a>
+
+                                                        <input id="form1" min="0" name="quantity" max="@item.SoLuongTon" value="@item.Soluong" type="number"
+                                                               class="form-control form-control-sm" style="width: 50px; text-align: center;" disabled />
+
+                                                        <a class="btn btn-link px-2"
+                                                           href="@Url.Action("UpdateCart","Cart",new {MaDonHang=item.MaDonHang,MaSach=item.Masach,SoLuong=item.Soluong+1})"
+                                                           onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                            <i class="bi bi-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-3 col-xl-3 d-flex justify-content-between" >
+                                                        <h5 class="p-5" >@item.Giaban VNĐ</h5>
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="@Url.Action("Delete","Cart",new {MaDonHang=item.MaDonHang,MaSach=item.Masach})" class="text-muted"><i class="bi bi-trash"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                        <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+
+                                        <hr class="my-4">
+
+                                        <div class="pt-5">
+                                            <h6 class="mb-0">
+                                                <a href="~/SachOnline/Index" class="text-body">
+                                                    <i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop
+                                                </a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-lg-4 bg-grey">
+                                <div class="p-5">
+                                    <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                    <hr class="my-4">
+                                    <div class="d-flex justify-content-between mb-4">
+                                        <h5 class="text-uppercase">items @count</h5>
+                                        <h5>@total.ToString("#,###,0") VNĐ</h5>
+                                    </div>
+                                    <h5 class="text-uppercase mb-3">Shipping</h5>
+                                    <form action="@Url.Action("DatHang", "Cart", new { MaDonHang = Model[0].MaDonHang })" method="post">
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <h7>Họ tên: @kh.HoTen</h7>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <h7>Địa chỉ: @kh.DiachiKH</h7>
+                                            <input type="text" name="DiaChiGH" value="@kh.DiachiKH" />
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <h7>Số điện thoại: </h7>
+                                            <input type="text" name="DienThoaiGH" value="@kh.DienthoaiKH" />
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <h7>Ngày đặt: </h7>
+                                            <input type="date" name="NgayDat" value="@DateTime.Now.ToString("yyyy-MM-dd")" readonly />
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <h7>Ngày giao: </h7>
+                                            <input type="date" name="NgayGiao" value="@DateTime.Now.AddDays(3).ToString("yyyy-MM-dd")" />
+                                        </div>
+                                        <button type="submit" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">
+                                            Đặt hàng
+                                        </button>
+                                    </form>
+
+                                    <h5 class="text-uppercase mb-3">Give code</h5>
+
+                                    <div class="mb-5">
+                                        <div class="form-outline">
+                                            <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                                            <label class="form-label" for="form3Examplea2">Enter your code</label>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <h5 class="text-uppercase mb-3">Total price: @total.ToString("#,##0,0") VNĐ</h5>
+                                    <div class="mb-4 pb-2">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-dark btn-block btn-lg"
+                                            data-mdb-ripple-color="dark">
+                                        BUY
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
