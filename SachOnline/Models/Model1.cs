@@ -21,7 +21,7 @@ namespace SachOnline.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TACGIA> TACGIAs { get; set; }
         public virtual DbSet<VIETSACH> VIETSACHes { get; set; }
-
+        public virtual DbSet<USER> USERs { get; set; }  
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CHITIETDONTHANG>()

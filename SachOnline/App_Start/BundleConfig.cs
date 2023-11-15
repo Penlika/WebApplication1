@@ -25,6 +25,12 @@ namespace SachOnline
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Contents/Admin/css").Include(
+                "~/Content/bootstrap.css",
+                "~/Content/site.css",
+                "~/Scripts/Admin/dashboard.css"));
+            bundles.Add(new ScriptBundle("~/bundles/Admin").Include(
+                "~/Scripts/Admin/dashboard.js"));
         }
     }
 }

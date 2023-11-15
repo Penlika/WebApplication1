@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web;
+using System.Text;
+using System.Dynamic;
 using System.Web.Mvc;
 
 namespace SachOnline
@@ -20,6 +24,22 @@ namespace SachOnline
             return (ExpandoObject)expando;
         }
 
+        public static Image ByteArrayToImage(byte[] fileBytes)
+        {
+            using (var stream = new MemoryStream(fileBytes))
+            {
+                return Image.FromStream(stream);
+            }
+        }
+        public static Byte[] ImageToByteArray(Image img)
+        {
+            using (var stream = new MemoryStream())
+            {
+                img.Save(stream, img.RawFormat);
+                return stream.ToArray();
+            }
+        }
+
         public static string ConvertImageToBase64(string path)
         {
             using (Image image = Image.FromFile(path))
@@ -30,7 +50,7 @@ namespace SachOnline
                     byte[] imageBytes = m.ToArray();
 
                     // Convert byte[] to Base64 String
-                    string base64String = Convert.ToBase64String(imageBytes);
+                    string base64String = "data:image/jpeg;base64," + Convert.ToBase64String(imageBytes);
                     return base64String;
                 }
             }
@@ -49,6 +69,26 @@ namespace SachOnline
                 return base64String;
             }
 
+        }
+
+        public static String ConvertImageURLToBase64(String url)
+        {
+            WebClient client = new WebClient();
+            // Convert byte[] to Base64 String
+            string base64String = ConvertImageToBase64(GetImageURL(url));
+            return base64String;
+
+        }
+        public static Image GetImageURL(string url)
+        {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebClient client = new WebClient();
+            byte[] imageData = client.DownloadData(url);
+            using (MemoryStream ms = new MemoryStream(imageData))
+            {
+                return Image.FromStream(ms);
+            }
         }
     }
 }

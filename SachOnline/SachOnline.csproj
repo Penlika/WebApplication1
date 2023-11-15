@@ -148,25 +148,22 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SachController.cs" />
+    <Compile Include="Areas\Navigation\NavigationModels.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\SachOnlineController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202310110647227_gfgf.cs" />
-    <Compile Include="Migrations\202310110647227_gfgf.designer.cs">
-      <DependentUpon>202310110647227_gfgf.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311010800373_sada.cs" />
-    <Compile Include="Migrations\202311010800373_sada.designer.cs">
-      <DependentUpon>202311010800373_sada.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311010832439_jjk.cs" />
-    <Compile Include="Migrations\202311010832439_jjk.designer.cs">
-      <DependentUpon>202311010832439_jjk.cs</DependentUpon>
+    <Compile Include="Migrations\202311150648480_sdfsfs.cs" />
+    <Compile Include="Migrations\202311150648480_sdfsfs.designer.cs">
+      <DependentUpon>202311150648480_sdfsfs.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\USER.cs" />
     <Compile Include="Models\CHITIETDONTHANG.cs" />
     <Compile Include="Models\CHUDE.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -182,6 +179,8 @@
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin\dashboard.css" />
+    <Content Include="Content\Admin\login.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -207,13 +206,20 @@
     <Content Include="Images\Mizuhara.Chizuru.full.3189263.jpg" />
     <Content Include="Images\Vladilena.Milizé.full.3345460.jpg" />
     <Content Include="Images\wp10508780.jpg" />
-    <Content Include="Images\wp10508784.png" />
+    <Content Include="Images\Avatar.png" />
+    <Content Include="Scripts\Admin\dashboard.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Navigation\Navigation.json" />
+    <Content Include="Areas\Admin\Views\Shared\MenuPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -235,7 +241,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
     <Content Include="Views\SachOnline\Index.cshtml" />
     <Content Include="Views\Shared\ChuDePartial.cshtml" />
@@ -251,6 +256,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Sach\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -283,14 +290,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202310110647227_gfgf.resx">
-      <DependentUpon>202310110647227_gfgf.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311010800373_sada.resx">
-      <DependentUpon>202311010800373_sada.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311010832439_jjk.resx">
-      <DependentUpon>202311010832439_jjk.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202311150648480_sdfsfs.resx">
+      <DependentUpon>202311150648480_sdfsfs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace SachOnline.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class jjk : IMigrationMetadata
+    public sealed partial class sdfsfs : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(jjk));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(sdfsfs));
         
         string IMigrationMetadata.Id
         {
-            get { return "202311010832439_jjk"; }
+            get { return "202311150648480_sdfsfs"; }
         }
         
         string IMigrationMetadata.Source
