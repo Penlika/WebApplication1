@@ -10,11 +10,19 @@ using System.Web;
 using System.Text;
 using System.Dynamic;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace SachOnline
 {
     public static class Utility
     {
+        public static void MsgBox(String ex, Page pg, Object obj)
+        {
+            string s = "<SCRIPT language='javascript'>alert('" + ex.Replace("\r\n", "\\n").Replace("'", "") + "'); </SCRIPT>";
+            Type cstype = obj.GetType();
+            ClientScriptManager cs = pg.ClientScript;
+            cs.RegisterClientScriptBlock(cstype, s, s.ToString());
+        }
         public static ExpandoObject ToExpando(this object anonymousObject)
         {
             IDictionary<string, object> anonymousDictionary = HtmlHelper.AnonymousObjectToHtmlAttributes(anonymousObject);
