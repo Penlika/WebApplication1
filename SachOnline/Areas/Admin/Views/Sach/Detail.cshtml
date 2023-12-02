@@ -1,0 +1,86 @@
+﻿@model SachOnline.Models.SACH
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>...</text>
+    }
+}
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+<h2 style="text-align:center">SACH DETAIL</h2>
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Chủ đề:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CHUDE.TenChuDe)
+        </dd>
+
+        <dt>
+            Nhà xuất bản:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHAXUATBAN.TenNXB)
+        </dd>
+        <dt>
+            Tên sách:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tensach)
+        </dd>
+        <dt>
+            Ảnh bìa:
+        </dt>
+        <dd>
+            <img src="@Model.Anhbia" alt=" @Model.Tensach">
+        </dd>
+        <dt>
+            Mô tả:
+        </dt>
+        <dd>
+            @Html.Raw(HttpUtility.HtmlDecode(Truncate((Model.Mota) ?? "", 70).ToString()))
+        </dd>
+        <dt>
+            Số lượng tồn:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Soluongton)
+        </dd>
+        <dt>
+            Giá bán:
+        </dt>
+        <dd>
+            @string.Format("{0:#,##0}", Model.Giaban) VNĐ
+        </dd>
+        <dt>
+            Ngày cập nhật:
+        </dt>
+        <dd>
+            @Html.FormatValue(@Model.Ngaycapnhat, "{0:dd/MM/yyyy}")
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Masach }) |
+    @Html.ActionLink("Back", "Index")
+</p>
+

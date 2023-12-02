@@ -12,6 +12,7 @@ using System.Dynamic;
 using System.Web.Mvc;
 using System.Web.UI;
 
+
 namespace SachOnline
 {
     public static class Utility
@@ -73,7 +74,7 @@ namespace SachOnline
                 byte[] imageBytes = m.ToArray();
 
                 // Convert byte[] to Base64 String
-                string base64String = Convert.ToBase64String(imageBytes);
+                string base64String = "data:image/jpeg;base64," + Convert.ToBase64String(imageBytes);
                 return base64String;
             }
 

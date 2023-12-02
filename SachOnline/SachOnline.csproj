@@ -150,7 +150,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\SachController.cs" />
     <Compile Include="Areas\Navigation\NavigationModels.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -158,10 +157,6 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311150648480_sdfsfs.cs" />
-    <Compile Include="Migrations\202311150648480_sdfsfs.designer.cs">
-      <DependentUpon>202311150648480_sdfsfs.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\USER.cs" />
@@ -222,8 +217,9 @@
     <Content Include="Areas\Navigation\Navigation.json" />
     <Content Include="Areas\Admin\Views\Shared\MenuPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Sach\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Sach\Create1.cshtml" />
     <Content Include="Areas\Admin\Views\Sach\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Sach\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Sach\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -292,11 +288,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202311150648480_sdfsfs.resx">
-      <DependentUpon>202311150648480_sdfsfs.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
